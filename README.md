@@ -17,9 +17,9 @@ Descrizione: Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ### DB
 
-cliente (nome, cognome,telefono, email indirizzo, modello caldaia,cod catasto, data installazione, ultima verifica, installatore)
-admin (email)
-manutenzione(cliente, data, note)
+- cliente (nome, cognome,telefono, email indirizzo, modello caldaia,cod catasto, data installazione, ultima verifica, installatore)
+- admin (email)
+- manutenzione(cliente, data, note)
 
 ## TODO
 - [X] Lista funzionalità
