@@ -1,6 +1,6 @@
 # GestionaleClienti
 
-Descrizione: Gestionale clienti, con attenzione alle manutenzioni effettuate
+Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ### Funzionalità
 
