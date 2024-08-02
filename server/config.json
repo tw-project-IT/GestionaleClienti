@@ -1,0 +1,10 @@
+{
+  "debug": true,
+  "origin": "origin",
+  "Database": {
+    "host": "host",
+    "user": "username",
+    "password": "password",
+    "database": "db"
+  }
+}

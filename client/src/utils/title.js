@@ -1,0 +1,1 @@
+module.exports.setTitle = (title) => document.title = title;
