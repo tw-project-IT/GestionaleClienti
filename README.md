@@ -4,7 +4,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ### Funzionalità
 
-- login google con blacklist indirizzo email (https://www.npmjs.com/package/@react-oauth/google)
+- login google con whitelist indirizzo email (https://www.npmjs.com/package/@react-oauth/google)
 - aggiunta cliente
 - elimina cliente
 - 2 anni dopo ultima verifica segna rosso
