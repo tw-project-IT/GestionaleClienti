@@ -186,14 +186,11 @@ function Table({ nameIcon, name, startItem, filters, headers, values, itemsPerPa
                         </li>
 
                         <li className="page-item disabled">
-                        <span className="page-link">
-                            { 1 + page }
-                        </span>
+                            <span className="page-link"> { 1 + page } </span>
                         </li>
 
                         <li className={"page-item bg-dark " + (page + 1 === totalPages ? "disabled" : "")} >
                             <button className="page-link bg-dark" aria-label="Next" onClick={() => setPage(page + 1)}>
-
                                 <span aria-hidden="true">»</span>
                             </button>
                         </li>
