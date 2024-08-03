@@ -16,6 +16,7 @@ const Dashboard = () => {
                 name={'Lista clienti'}
                 nameIcon={<LiaClipboardListSolid/>}
                 headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo', 'Modello caldaia', 'Cod catasto']}
+                //filters={['Manutenzione', 'Urgente']}
                 itemsPerPage = {'5'}
                 order = {"desc"}
                 values={
