@@ -25,12 +25,17 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Lista funzionalità
 - [X] Lista pagine
 - [X] DB
-- [ ] DB draw
+- [X] DB draw
 - [ ] Implementazione DB
-- [ ] Pagina aggiungi cliente
 - [ ] Pagina lista clienti
-- [ ] Elimina cliente
+- [ ] Pagina aggiungi cliente
+- [ ] Aggiunta manutenzione
 - [ ] Login google
 - [ ] Check email google
+
+## Next
 - [ ] Home page - dashboard
-- [ ] Pagina modifica cliente??
+
+## Maybe
+- [ ] Elima cliente
+- [ ] Pagina modifica cliente
