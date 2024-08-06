@@ -6,20 +6,19 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 - login google con whitelist indirizzo email (https://www.npmjs.com/package/@react-oauth/google)
 - aggiunta cliente
-- elimina cliente
+- aggiunta caldaie
+- aggiunta manutenzione caldaia
 - 2 anni dopo ultima verifica segna rosso
 
 ### Pagine
 
 - homepage
-- lista clienti: sortato per manutenzione, se è presente una nota nell'ultima manutenzione c'è un segnale
-- pagina lista manutenzioni cliente
+- lista clienti
+- lista caldaie: sortato per manutenzione, se è presente una nota nell'ultima manutenzione c'è un segnale
+- pagina lista manutenzioni
 
-### DB
-
-- cliente (nome, cognome,telefono, email indirizzo, modello caldaia,cod catasto, data installazione, ultima verifica, installatore)
-- admin (email)
-- manutenzione(cliente, data, note)
+## DB
+[Link](https://app.diagrams.net/#G1KS7ShrZ80fJmi708Tx_KKiXmwQTkN0I0#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D)
 
 ## TODO
 - [X] Lista funzionalità
