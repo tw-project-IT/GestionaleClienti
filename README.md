@@ -29,6 +29,8 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Implementazione DB
 - [ ] Pagina lista clienti
 - [ ] Pagina aggiungi cliente
+- [ ] Pagina caldaie con riferimento a cliente
+- [ ] Aggiunta caldaia
 - [ ] Aggiunta manutenzione
 - [ ] Login google
 - [ ] Check email google
@@ -38,4 +40,4 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ## Maybe
 - [ ] Elima cliente
-- [ ] Pagina modifica cliente
+- [ ] Modifica cliente
