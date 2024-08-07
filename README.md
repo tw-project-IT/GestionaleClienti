@@ -32,6 +32,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Aggiunta caldaia
 - [ ] Aggiunta manutenzione
 - [ ] Login google
+- [ ] Logout
 - [ ] Check email google
 
 ## Next
