@@ -1,46 +1,77 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import './style.scss';
 import {setTitle} from "../../utils/title";
 import Table from "../../components/table/Table";
 import {LiaClipboardListSolid} from "react-icons/lia";
 import Sidebar from "../../components/sidebar/Sidebar";
+import {Notify} from "../../components/notify/Notify";
+import Loading from "../../components/loading/Loading";
+import Error from "../Error/Error";
 
 const Customers = () => {
 
-    setTitle("CLienti | Gestionale Clienti");
+    setTitle("Clienti | Gestionale Clienti");
+
+    const [customers, setCustomers] = useState(null);
+    const notify = useContext(Notify);
+
+    useEffect(() => {
+        const getBuyers = () => {
+            fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
+                method: 'POST'
+                //headers: {'Authorization': getCookie("token")} // TODO: Token
+            })
+                .then(result => result.json())
+                .then(data => {
+                    if (data.error)
+                        return notify.showMessage("error", data.error);
+
+                    setCustomers(data);
+                })
+                .catch(error => {
+                    console.error("Errore: ", error)
+                });
+        };
+
+        getBuyers();
+    }, [notify]);
 
     return (
-        <div>
-            <Sidebar/>
+        <>
+            <Loading loaded={customers === null} />
 
-            <section className="right-container">
+            {
+                (customers === null)
+                    ? <Error />
+                    : <>
+                        <Sidebar/>
 
-                <div className="container-fluid pt-2 px-4">
-                    <h1 className={"text-light"}>Lista clienti</h1>
+                        <section className="right-container">
 
-                    <Table
-                        name={'Lista clienti'}
-                        nameIcon={<LiaClipboardListSolid/>}
-                        headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo', 'Modello caldaia', 'Cod catasto']}
-                        //filters={['Manutenzione', 'Urgente']}
-                        itemsPerPage = {'5'}
-                        order = {"desc"}
-                        values={
-                            [
-                                ["Davide", "Paolazzi", "123456789", "paola@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola2@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola3@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola4@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola5@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola6@gmail.com", "Via ciao 2", "", ""],
-                                ["Davide", "Paolazzi", "123456789", "paola7@gmail.com", "Via ciao 2", "", ""],
-                            ]
-                        }
-                    />
-                </div>
-            </section>
-        </div>
+                            <div className="container-fluid pt-2 px-4">
+                                <h1 className={"text-light"}>Lista clienti</h1>
+
+                                <Table
+                                    name={'Lista clienti'}
+                                    nameIcon={<LiaClipboardListSolid/>}
+                                    headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
+                                    //filters={['Manutenzione', 'Urgente']}
+                                    itemsPerPage = {'5'}
+                                    order = {"desc"}
+                                    values={ customers && customers.map((customer) => [
+                                        customer.firstname,
+                                        customer.lastname,
+                                        customer.telephone,
+                                        customer.email,
+                                        customer.address
+                                    ]) }
+                                />
+                            </div>
+                        </section>
+                    </>
+            }
+        </>
     )
 }
 

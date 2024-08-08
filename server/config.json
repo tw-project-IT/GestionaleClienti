@@ -1,10 +1,10 @@
 {
   "debug": true,
-  "origin": "origin",
+  "origin": "https://localhost:3000",
   "Database": {
-    "host": "host",
-    "user": "username",
-    "password": "password",
-    "database": "db"
+    "host": "185.25.207.189",
+    "user": "root",
+    "password": "p9NdYY6KNOuO",
+    "database": "GestionaleClienti"
   }
 }

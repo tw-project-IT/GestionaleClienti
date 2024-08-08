@@ -26,7 +26,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] DB
 - [X] DB draw
 - [ ] Implementazione DB
-- [ ] Pagina lista clienti
+- [X] Pagina lista clienti
 - [ ] Pagina aggiungi cliente
 - [ ] Pagina caldaie con riferimento a cliente
 - [ ] Aggiunta caldaia
