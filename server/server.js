@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3300;
+const PORT = 3301;
 const server = require('http').Server(app);
 
 // Configurazioni
