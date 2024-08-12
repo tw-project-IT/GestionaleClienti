@@ -8,6 +8,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
+import AddCustomer from "../../components/model/AddCustomer";
 
 const Customers = () => {
 
@@ -57,6 +58,9 @@ const Customers = () => {
                                     nameIcon={<LiaClipboardListSolid/>}
                                     headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
                                     //filters={['Manutenzione', 'Urgente']}
+                                    startItem={
+                                        <AddCustomer/>
+                                    }
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
                                     values={ customers && customers.map((customer) => [
