@@ -1,33 +1,43 @@
 import React, {useContext, useState} from "react";
 import { Notify } from "../notify/Notify";
-import { getCookie } from "../../utils/cookie";
 import AddField from "./AddField";
 
 function AddCustomer ()  {
 
-    const [firstName, setFirstName] = useState([]);
-    const [lastName, setLastName] = useState([]);
-    const [telephone, setTelephone] = useState([]);
-    const [email, setEmail] = useState([]);
-    const [address, setAddress] = useState([]);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
 
     const notify = useContext(Notify);
 
     const handleSave = async (event) => {
         event.preventDefault();
 
-        // TODO: NEL POST VANNO MESSI STI PARAMETRI
-
-        fetch(`${process.env.REACT_APP_PROXY}/api/saveBuyer?type=i&username=${firstName}&discord=${lastName}&builtbybit=${telephone}&telegram=${email}`, {
+        const requestOptions = {
             method: 'POST',
-            headers: {'Authorization': getCookie("token")}
-        })
+             headers: {
+                 'Content-Type': 'application/json'
+                 /*'Authorization': getCookie("token")*/
+             },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                telephone: telephone || null,
+                email: email || null,
+                address: address || null
+            })
+        };
+
+        fetch(`${process.env.REACT_APP_PROXY}/api/addCustomer`, requestOptions)
             .then(result => result.json())
             .then(data => {
                 if (data.error)
                     return notify.showMessage("error", data.error);
 
                 notify.showMessage("success", "Cliente aggiunto con successo!");
+
             })
             .catch(error => {
                 console.error("Errore: ", error)
