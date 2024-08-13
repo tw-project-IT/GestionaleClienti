@@ -31,6 +31,8 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Pagina caldaie con riferimento a cliente
 - [ ] Aggiunta caldaia
 - [ ] Aggiunta manutenzione
+
+
 - [ ] Login google
 - [ ] Logout
 - [ ] Check email google
