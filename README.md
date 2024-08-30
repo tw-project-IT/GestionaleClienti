@@ -37,7 +37,3 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Login google
 - [ ] Logout
 - [ ] Check email google
-
-## Maybe
-- [ ] Elimina cliente
-- [ ] Modifica cliente
