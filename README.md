@@ -35,5 +35,5 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Home page - dashboard 
 
 - [ ] Login google
-- [ ] Logout
 - [ ] Check email google
+- [ ] Logout
