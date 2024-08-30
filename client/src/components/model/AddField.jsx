@@ -1,4 +1,4 @@
-export default function AddField({ name, value, setter}) {
+export default function AddField({ name, value, setter, type = 'text'}) {
 
     return (
         <>
@@ -9,7 +9,7 @@ export default function AddField({ name, value, setter}) {
             <div className="col-sm-9 mb-2">
                 <div className="input-group mb-1">
                     <input
-                        type="text"
+                        type={type}
                         className="form-control"
                         value={ value }
                         onChange={ (event) => setter(event.target.value) }

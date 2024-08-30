@@ -8,6 +8,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
+import AddBoiler from "../../components/model/AddBoiler";
 
 const Boilers = () => {
 
@@ -56,9 +57,9 @@ const Boilers = () => {
                                     name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
                                     headers={['Cliente', 'Modello', 'Cod. catasto', 'Installazione']}
-                                    /* startItem={
-                                        <AddCustomer/>
-                                    }*/
+                                     startItem={
+                                        <AddBoiler/>
+                                    }
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
                                     values={ boilers && boilers.map((boiler) => [
