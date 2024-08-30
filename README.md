@@ -29,8 +29,9 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Pagina lista clienti
 - [X] Pagina aggiungi cliente
 - [X] Pagina caldaie con riferimento a cliente
-- [ ] Aggiunta caldaia
+- [X] Aggiunta caldaia
 - [ ] Aggiunta manutenzione
+- [ ] Colori manutenzione
 - [ ] Home page - dashboard 
 
 - [ ] Login google
