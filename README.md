@@ -12,9 +12,9 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ### Pagine
 
-- homepage: Contatore caldaie da fare, tabella con caldaie da fare, tabella con caldaie con note o info
+- homepage
 - lista clienti
-- lista caldaie: sortato per manutenzione, se è presente una nota nell'ultima manutenzione c'è un segnale, un anno fa colore giallo, piu di 2 anni fa rosso
+- lista caldaie: sortato per manutenzione, se è presente una nota nell'ultima manutenzione c'è un segnale
 - pagina lista manutenzioni
 
 ## DB
@@ -25,10 +25,10 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Lista pagine
 - [X] DB
 - [X] DB draw
-- [ ] Implementazione DB
+- [X] Implementazione DB
 - [X] Pagina lista clienti
 - [X] Pagina aggiungi cliente
-- [ ] Pagina caldaie con riferimento a cliente
+- [X] Pagina caldaie con riferimento a cliente
 - [ ] Aggiunta caldaia
 - [ ] Aggiunta manutenzione
 - [ ] Home page - dashboard 

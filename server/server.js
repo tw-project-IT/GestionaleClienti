@@ -68,3 +68,4 @@ app.use(cors({
 // Collegamento dei moduli delle route API
 app.use("/", require("./src/routers/getCustomers"));
 app.use("/", require("./src/routers/addCustomer"));
+app.use("/", require("./src/routers/getBoilers"));

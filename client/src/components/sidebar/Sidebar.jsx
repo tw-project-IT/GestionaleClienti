@@ -57,7 +57,7 @@ function Sidebar()  {
                         <Item
                             name='Caldaie'
                             icon={< LiaClipboardListSolid /> }
-                            path={ '/caldaie' } // TODO: Naming
+                            path={ '/boilers' }
                         />
 
                     </ul>

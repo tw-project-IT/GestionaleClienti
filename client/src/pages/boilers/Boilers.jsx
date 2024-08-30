@@ -8,18 +8,17 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
-import AddCustomer from "../../components/model/AddCustomer";
 
-const Customers = () => {
+const Boilers = () => {
 
-    setTitle("Clienti | Gestionale Clienti");
+    setTitle("Caldaie | Gestionale Clienti");
 
-    const [customers, setCustomers] = useState(null);
+    const [boilers, setBoilers] = useState(null);
     const notify = useContext(Notify);
 
     useEffect(() => {
-        const getCustomers = () => {
-            fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
+        const getBoilers = () => {
+            fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
                 method: 'POST'
                 //headers: {'Authorization': getCookie("token")} // TODO: Token
             })
@@ -28,22 +27,22 @@ const Customers = () => {
                     if (data.error)
                         return notify.showMessage("error", data.error);
 
-                    setCustomers(data);
+                    setBoilers(data);
                 })
                 .catch(error => {
                     console.error("Errore: ", error)
                 });
         };
 
-        getCustomers();
+        getBoilers();
     }, [notify]);
 
     return (
         <>
-            <Loading loaded={customers === null} />
+            <Loading loaded={boilers === null} />
 
             {
-                (customers === null)
+                (boilers === null)
                     ? <Error />
                     : <>
                         <Sidebar/>
@@ -51,24 +50,22 @@ const Customers = () => {
                         <section className="right-container">
 
                             <div className="container-fluid pt-2 px-4">
-                                <h1 className={"text-light"}>Lista clienti</h1>
+                                <h1 className={"text-light"}>Lista caldaie</h1>
 
                                 <Table
-                                    name={'Lista clienti'}
+                                    name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
-                                    //filters={['Manutenzione', 'Urgente']}
-                                    startItem={
+                                    headers={['Cliente', 'Modello', 'Cod. catasto', 'Installazione']}
+                                    /* startItem={
                                         <AddCustomer/>
-                                    }
+                                    }*/
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
-                                    values={ customers && customers.map((customer) => [
-                                        customer.firstname,
-                                        customer.lastname,
-                                        customer.telephone,
-                                        customer.email,
-                                        customer.address
+                                    values={ boilers && boilers.map((boiler) => [
+                                        boiler.customer,
+                                        boiler.model,
+                                        boiler.registry_code,
+                                        new Date(boiler.installation_date).toLocaleDateString(),
                                     ]) }
                                 />
                             </div>
@@ -79,4 +76,4 @@ const Customers = () => {
     )
 }
 
-export default Customers;
+export default Boilers;
