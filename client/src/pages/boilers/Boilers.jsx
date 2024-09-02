@@ -56,7 +56,7 @@ const Boilers = () => {
                                 <Table
                                     name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Cliente', 'Modello', 'Cod. catasto', 'Installazione']}
+                                    headers={['Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
                                      startItem={
                                         <AddBoiler/>
                                     }
@@ -67,6 +67,9 @@ const Boilers = () => {
                                         boiler.model,
                                         boiler.registry_code,
                                         new Date(boiler.installation_date).toLocaleDateString(),
+                                        boiler.last_maintenance_date ?
+                                            new Date(boiler.last_maintenance_date).toLocaleDateString() :
+                                            "Nessuna"
                                     ]) }
                                 />
                             </div>

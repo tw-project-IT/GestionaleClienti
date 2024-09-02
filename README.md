@@ -8,7 +8,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - aggiunta cliente
 - aggiunta caldaie
 - aggiunta manutenzione caldaia
-- 2 anni dopo ultima verifica segna rosso
+- Caldaie fatte un anno fa colore giallo, Piu di 2 anni fa rosso
 
 ### Pagine
 

@@ -6,9 +6,20 @@ router.post('/api/getBoilers', async (req, res) => {
 
     try {
         const query = `
-            SELECT boiler.*, CONCAT(customer.firstname, " ", customer.lastname) AS customer
-            FROM boiler
-            JOIN customer ON boiler.customer = customer.id
+           SELECT
+                boiler.*,
+                CONCAT(customer.firstname, " ", customer.lastname) AS customer,
+                maintenance.date as last_maintenance_date,
+                maintenance.notes
+           FROM boiler
+           JOIN customer ON boiler.customer = customer.id
+           LEFT JOIN maintenance ON boiler.id = maintenance.boiler
+           WHERE maintenance.date =
+           (
+                SELECT MAX(max_maintenance.date)
+                FROM maintenance max_maintenance
+                WHERE max_maintenance.boiler = boiler.id
+            ) OR maintenance.date IS NULL;
         `;
 
         const [result] = await dbConnection.promise().query(query);
