@@ -9,6 +9,7 @@ import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
+import AddMaintenance from "../../components/model/AddMaintenance";
 
 const Boilers = () => {
 
@@ -56,13 +57,16 @@ const Boilers = () => {
                                 <Table
                                     name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
-                                     startItem={
-                                        <AddBoiler/>
+                                    headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
+                                    startItems={[
+                                        <AddBoiler/>,
+                                        <AddMaintenance />
+                                    ]
                                     }
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
                                     values={ boilers && boilers.map((boiler) => [
+                                        boiler.id,
                                         boiler.customer,
                                         boiler.model,
                                         boiler.registry_code,

@@ -51,14 +51,14 @@ function AddCustomer ()  {
                 type="button"
                 className="btn btn-sm btn-outline-light"
                 data-bs-toggle="modal"
-                data-bs-target= { "#createBuyer" }
+                data-bs-target= { "#createCustomer" }
             >
                 Aggiungi cliente
             </button>
 
             <div
                 className="modal fade"
-                id={ "createBuyer" }
+                id={ "createCustomer" }
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 aria-labelledby="staticBackdropLabel"

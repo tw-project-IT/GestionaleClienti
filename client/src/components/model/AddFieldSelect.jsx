@@ -14,7 +14,7 @@ export default function AddFieldSelect ({ name, value, setter, values, mapper}) 
                         onChange={ (event) => setter(event.target.value) }
                         required
                     >
-                        <option value={"null"} selected>Seleziona il { name }</option>
+                        <option value={"null"} selected>Seleziona { name }</option>
                         { values && values.map((value) => (
                             <option value={value.id} key = {value.id}>{mapper(value)}</option>
                         ))}

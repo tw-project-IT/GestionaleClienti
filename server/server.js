@@ -70,3 +70,4 @@ app.use("/", require("./src/routers/getCustomers"));
 app.use("/", require("./src/routers/addCustomer"));
 app.use("/", require("./src/routers/getBoilers"));
 app.use("/", require("./src/routers/addBoiler"));
+app.use("/", require("./src/routers/addMaintenance"));

@@ -3,20 +3,19 @@ import { Notify } from "../notify/Notify";
 import AddField from "./AddField";
 import AddFieldSelect from "./AddFieldSelect";
 
-function AddBoiler ()  {
+function AddMaintenance ()  {
 
-    const [customers, setCustomers] = useState([]);
+    const [boilers, setBoilers] = useState([]);
 
-    const [customer, setCustomer] = useState([]);
-    const [model, setModel] = useState("");
-    const [registryCode, setRegistryCode] = useState("");
-    const [installationDate, setInstallationDate] = useState("");
+    const [boiler, setBoiler] = useState([]);
+    const [date, setDate] = useState("");
+    const [notes, setNotes] = useState("");
 
     const notify = useContext(Notify);
 
     useEffect(() => {
-        const getCustomers = () => {
-            fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
+        const getBoilers = () => {
+            fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
                 method: 'POST'
                 //headers: {'Authorization': getCookie("token")} // TODO: Token
             })
@@ -25,14 +24,14 @@ function AddBoiler ()  {
                     if (data.error)
                         return notify.showMessage("error", data.error);
 
-                    setCustomers(data);
+                    setBoilers(data);
                 })
                 .catch(error => {
                     console.error("Errore: ", error)
                 });
         };
 
-        getCustomers();
+        getBoilers();
     }, [notify]);
 
     const handleSave = async (event) => {
@@ -45,20 +44,19 @@ function AddBoiler ()  {
                  /*'Authorization': getCookie("token")*/
              },
             body: JSON.stringify({
-                customer,
-                model,
-                registryCode,
-                installationDate
+                boiler,
+                date,
+                notes
             })
         };
 
-        fetch(`${process.env.REACT_APP_PROXY}/api/addBoiler`, requestOptions)
+        fetch(`${process.env.REACT_APP_PROXY}/api/addMaintenance`, requestOptions)
             .then(result => result.json())
             .then(data => {
                 if (data.error)
                     return notify.showMessage("error", data.error);
 
-                notify.showMessage("success", "Caldaia aggiunta con successo!");
+                notify.showMessage("success", "Manutenzione aggiunta con successo!");
 
             })
             .catch(error => {
@@ -66,21 +64,20 @@ function AddBoiler ()  {
             });
     };
 
-
     return (
         <div>
             <button
                 type="button"
                 className="btn btn-sm btn-outline-light"
                 data-bs-toggle="modal"
-                data-bs-target= { "#createBoiler" }
+                data-bs-target= { "#createMaintenance" }
             >
-                Aggiungi caldaia
+                Aggiungi manutenzione
             </button>
 
             <div
                 className="modal fade"
-                id={ "createBoiler" }
+                id={ "createMaintenance" }
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 aria-labelledby="staticBackdropLabel"
@@ -91,7 +88,7 @@ function AddBoiler ()  {
                     <div className="modal-content bg-dark text-light">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="content">
-                                { "Nuova Caldaia" }
+                                { "Nuova Manutenzione" }
                             </h1>
                             <button
                                 type="button"
@@ -106,27 +103,22 @@ function AddBoiler ()  {
 
                                 <div className="form-group row">
 
-                                    <AddFieldSelect name="Cliente"
-                                              value={customer}
-                                              setter={setCustomer}
-                                              values={customers}
-                                              mapper={(customer) => `${customer.firstname} ${customer.lastname}`}
+                                    <AddFieldSelect name="Caldaia"
+                                              value={boiler}
+                                              setter={setBoiler}
+                                              values={boilers}
+                                              mapper={(boiler) => `${boiler.customer} - ${boiler.model} (${boiler.id})`}
                                     />
 
-                                    <AddField name="Modello"
-                                              value={model}
-                                              setter={setModel}
-                                    />
-
-                                    <AddField name="Cod. Catasto"
-                                              value={registryCode}
-                                              setter={setRegistryCode}
-                                    />
-
-                                    <AddField name="Data installazione"
-                                              value={installationDate}
-                                              setter={setInstallationDate}
+                                    <AddField name="Data"
+                                              value={date}
+                                              setter={setDate}
                                               type="date"
+                                    />
+
+                                    <AddField name="Note"
+                                              value={notes}
+                                              setter={setNotes}
                                     />
                                 </div>
 
@@ -147,4 +139,4 @@ function AddBoiler ()  {
     )
 }
 
-export default AddBoiler;
+export default AddMaintenance;

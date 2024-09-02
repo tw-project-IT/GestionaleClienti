@@ -58,9 +58,9 @@ const Customers = () => {
                                     nameIcon={<LiaClipboardListSolid/>}
                                     headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
                                     //filters={['Manutenzione', 'Urgente']}
-                                    startItem={
+                                    startItems={[
                                         <AddCustomer/>
-                                    }
+                                    ]}
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
                                     values={ customers && customers.map((customer) => [

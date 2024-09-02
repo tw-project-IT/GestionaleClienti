@@ -1,7 +1,7 @@
 import { ImFilter } from "react-icons/im";
 import {useEffect, useState} from "react";
 
-function Table({ nameIcon, name, startItem, filters, headers, values, itemsPerPage, searchEnabled, paginationEnabled, order }) {
+function Table({ nameIcon, name, startItems, filters, headers, values, itemsPerPage, searchEnabled, paginationEnabled, order }) {
 
     const [page, setPage] = useState(0);
     const [search, setSearch] = useState('');
@@ -78,7 +78,12 @@ function Table({ nameIcon, name, startItem, filters, headers, values, itemsPerPa
             </div>
             <div className="d-flex justify-content-between flex-column flex-md-row">
                 <div className="col-auto">
-                    { startItem }
+                    {
+                        startItems && startItems
+                            .map((startItem) =>
+                                startItem
+                            )
+                    }
                 </div>
                 <div className="col-auto align-items-center row">
                     <div className="input-group input-group-sm">
