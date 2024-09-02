@@ -46,7 +46,7 @@ function AddMaintenance ()  {
             body: JSON.stringify({
                 boiler,
                 date,
-                notes
+                notes: notes || null
             })
         };
 
