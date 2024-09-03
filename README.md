@@ -32,7 +32,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Aggiunta caldaia
 - [X] Aggiunta manutenzione
 - [ ] Colori manutenzione
-- [ ] PIU manutenzioni stesso giorno? unique key? chiedere
+- [ ] PIU manutenzioni stesso giorno? group by  
 - [ ] Home page - dashboard 
 
 - [ ] Login google
