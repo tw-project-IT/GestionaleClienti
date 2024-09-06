@@ -31,8 +31,8 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Pagina caldaie con riferimento a cliente
 - [X] Aggiunta caldaia
 - [X] Aggiunta manutenzione
-- [X] PIU manutenzioni stesso giorno? group by
-- [ ] Colori manutenzione
+- [X] Colori manutenzione
+- [X] Segnale se ci sono note
 - [ ] Home page - dashboard 
 
 - [ ] Login google
