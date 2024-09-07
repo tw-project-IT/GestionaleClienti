@@ -33,6 +33,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Aggiunta manutenzione
 - [X] Colori manutenzione
 - [X] Segnale se ci sono note
+- [ ] io notify 
 - [ ] Home page - dashboard 
 
 - [ ] Login google
