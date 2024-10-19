@@ -10,7 +10,9 @@ import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
-import {FiAlertTriangle} from "react-icons/fi";
+import { FiAlertTriangle } from "react-icons/fi";
+import { getCookie } from "../../utils/cookie";
+import {redirectLogin} from "../../utils/utils";
 
 const Boilers = () => {
 
@@ -22,15 +24,16 @@ const Boilers = () => {
     useEffect(() => {
         const getBoilers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
-                method: 'POST'
-                //headers: {'Authorization': getCookie("token")} // TODO: Token
+                method: 'POST',
+                headers: {'Authorization': getCookie("token")},
+                credentials: 'include'
             })
-                .then(result => result.json())
                 .then(data => {
-                    if (data.error)
-                        return notify.showMessage("error", data.error);
+                    if (data.status === 400 || data.status === 401 || data.status === 403) {
+                        return redirectLogin();
+                    }
 
-                    setBoilers(data);
+                    setBoilers(data.json());
                 })
                 .catch(error => {
                     console.error("Errore: ", error)

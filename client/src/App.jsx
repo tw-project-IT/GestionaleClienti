@@ -12,20 +12,20 @@ import Login from "./pages/login/Login";
 
 function App() {
 
-  return (
-      <GoogleOAuthProvider clientId="1056041880555-v4bc1nqh1dn2gmt21hk3tp98uffcpuv2.apps.googleusercontent.com">
-          <NotifyProvider>
-              <BrowserRouter>
-                  <Routes>
-                      <Route path='/' element={ <Dashboard /> } />
-                      <Route path='/login' element={ <Login /> } />
-                      <Route path='/customers' element={ <Customers /> } />
-                      <Route path='/boilers' element={ <Boilers /> } />
-                  </Routes>
-              </BrowserRouter>
-          </NotifyProvider>
-      </GoogleOAuthProvider>
-  );
+    return (
+        <GoogleOAuthProvider clientId="1056041880555-v4bc1nqh1dn2gmt21hk3tp98uffcpuv2.apps.googleusercontent.com">
+            <NotifyProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Dashboard/>}/>
+                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/customers' element={<Customers/>}/>
+                        <Route path='/boilers' element={<Boilers/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </NotifyProvider>
+        </GoogleOAuthProvider>
+    );
 }
 
 export default App;

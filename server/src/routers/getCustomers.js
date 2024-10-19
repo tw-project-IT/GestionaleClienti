@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const { dbConnection } = require ('../../server');
+const verifyToken = require("./verifyToken");
 
-router.post('/api/getCustomers', async (req, res) => {
+router.post('/api/getCustomers', verifyToken, async (req, res) => {
 
     try {
         const query = `SELECT * FROM customer`;
@@ -12,7 +13,7 @@ router.post('/api/getCustomers', async (req, res) => {
         res.send(result);
     } catch (error) {
         console.error("Unable to execute getCustomers query!", error);
-        return res.send({ error: 'query_error' });
+        return res.status(400);
     }
 
 });

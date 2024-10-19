@@ -10,7 +10,8 @@ const server = require('http').Server(app);
 const {
     debug,
     origin,
-    Database
+    secret,
+    Database,
 } = require("./config.json");
 
 // Connessione al database
@@ -51,6 +52,8 @@ app.use((req, res, next) => {
 module.exports = {
     server,
     debug,
+    secret,
+    origin,
     dbConnection
 };
 
@@ -62,7 +65,8 @@ app.use(express.json());
 app.use(cors({
     origin,
     methods: ["POST"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
 }));
 
 // Collegamento dei moduli delle route API

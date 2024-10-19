@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const { dbConnection } = require ('../../server');
+const verifyToken = require("./verifyToken");
 
-router.post('/api/getBoilers', async (req, res) => {
+router.post('/api/getBoilers', verifyToken, async (req, res) => {
 
     try {
         const query = `
@@ -28,7 +29,7 @@ router.post('/api/getBoilers', async (req, res) => {
         res.send(result);
     } catch (error) {
         console.error("Unable to execute getBoilers query!", error);
-        return res.send({ error: 'query_error' });
+        return res.status(400);
     }
 
 });

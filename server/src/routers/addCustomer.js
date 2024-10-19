@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const { dbConnection } = require ('../../server');
+const verifyToken = require("./verifyToken");
 
-router.post('/api/addCustomer', async (req, res) => {
+router.post('/api/addCustomer', verifyToken, async (req, res) => {
 
     try {
         const firstname = req.body.firstName;
@@ -24,7 +25,7 @@ router.post('/api/addCustomer', async (req, res) => {
         res.send(result);
     } catch (error) {
         console.error("Unable to execute addCustomer query!", error);
-        return res.send({ error: 'query_error' });
+        return res.status(400);
     }
 
 });

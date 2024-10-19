@@ -9,6 +9,8 @@ import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddCustomer from "../../components/model/AddCustomer";
+import {getCookie} from "../../utils/cookie";
+import {redirectLogin} from "../../utils/utils";
 
 const Customers = () => {
 
@@ -20,15 +22,16 @@ const Customers = () => {
     useEffect(() => {
         const getCustomers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
-                method: 'POST'
-                //headers: {'Authorization': getCookie("token")} // TODO: Token
+                method: 'POST',
+                headers: {'Authorization': getCookie("token")},
+                credentials: 'include'
             })
-                .then(result => result.json())
                 .then(data => {
-                    if (data.error)
-                        return notify.showMessage("error", data.error);
+                    if (data.status === 400 || data.status === 401 || data.status === 403) {
+                        return redirectLogin();
+                    }
 
-                    setCustomers(data);
+                    setCustomers(data.json());
                 })
                 .catch(error => {
                     console.error("Errore: ", error)

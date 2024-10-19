@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
 const { dbConnection } = require ('../../server');
+const verifyToken = require("./verifyToken");
 
-router.post('/api/addMaintenance', async (req, res) => {
+router.post('/api/addMaintenance', verifyToken, async (req, res) => {
 
     try {
         const boiler = req.body.boiler;
@@ -16,7 +17,7 @@ router.post('/api/addMaintenance', async (req, res) => {
         res.send(result);
     } catch (error) {
         console.error("Unable to execute addMaintenance query!", error);
-        return res.send({ error: 'query_error' });
+        return res.status(400);
     }
 
 });

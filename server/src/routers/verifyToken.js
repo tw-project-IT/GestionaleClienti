@@ -5,22 +5,16 @@ function verifyToken(req, res, next) {
     const token = req.headers['authorization'];
 
     if (!token) {
-        return res.send({ error: 'invalid_token' })
+        return res.status(401).json({ message: 'Token not provided' });
     }
 
-    jwt.verify(token, secret, function(err, decoded) {
+    jwt.verify(token, secret, { algorithms: ['RS256'] }, function(err) {
         if (err) {
             console.log(err)
-            if (err.name === 'TokenExpiredError') {
-                return res.send({ error: 'token_expired' });
-            } else if (err.name === 'JsonWebTokenError') {
-                return res.send({ error: 'invalid_token' });
-            } else {
-                return res.send({ error: 'internal_server_error' });
-            }
-        }
+            console.log(token)
 
-        req.decoded = decoded;
+            return res.status(403).json({ message: 'Invalid token' });
+        }
 
         next();
     });
