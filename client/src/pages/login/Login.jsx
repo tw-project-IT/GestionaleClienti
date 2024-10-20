@@ -5,7 +5,6 @@ import { GoogleLogin } from '@react-oauth/google';
 import { setCookie } from "../../utils/cookie";
 import {redirect} from "../../utils/utils";
 import {Notify} from "../../components/notify/Notify";
-import jwtDecode from "jwt-decode";
 
 const Login = () => {
 
@@ -19,9 +18,6 @@ const Login = () => {
 
             <GoogleLogin
                 onSuccess={credentialResponse => {
-                    // TODO: RImuovere debug
-
-                    console.log("decode: " + jwtDecode(credentialResponse?.credential))
                     setCookie("token", credentialResponse?.credential, 7);
                     redirect("/")
                 }}

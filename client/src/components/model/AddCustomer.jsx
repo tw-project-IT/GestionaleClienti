@@ -1,6 +1,8 @@
 import React, {useContext, useState} from "react";
 import { Notify } from "../notify/Notify";
 import AddField from "./AddField";
+import {getCookie} from "../../utils/cookie";
+import {redirectLogin} from "../../utils/utils";
 
 function AddCustomer ()  {
 
@@ -18,8 +20,8 @@ function AddCustomer ()  {
         const requestOptions = {
             method: 'POST',
              headers: {
-                 'Content-Type': 'application/json'
-                 /*'Authorization': getCookie("token")*/
+                 'Content-Type': 'application/json',
+                 'Authorization': getCookie("token")
              },
             body: JSON.stringify({
                 firstName,
@@ -31,13 +33,17 @@ function AddCustomer ()  {
         };
 
         fetch(`${process.env.REACT_APP_PROXY}/api/addCustomer`, requestOptions)
-            .then(result => result.json())
             .then(data => {
+                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                    return redirectLogin();
+                }
+
+                return data.json();
+            }).then(data => {
                 if (data.error)
                     return notify.showMessage("error", data.error);
 
                 notify.showMessage("success", "Cliente aggiunto con successo!");
-
             })
             .catch(error => {
                 console.error("Errore: ", error)

@@ -66,7 +66,7 @@ function Sidebar()  {
                 <div className="bottom-content">
                     <Item
                         name='Logout'
-                        icon ={< BiLogOutCircle /> } // TODO: Logout
+                        icon ={< BiLogOutCircle /> }
                         path={ '/login' }
                     />
                 </div>

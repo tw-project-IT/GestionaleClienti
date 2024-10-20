@@ -26,9 +26,6 @@ const Customers = () => {
                 headers: {'Authorization': getCookie("token")}
             })
                 .then(data => {
-                    console.log("data: " + data)
-                    console.log("data status: " + data.status)
-
                     if (data.status === 400 || data.status === 401 || data.status === 403) {
                         return redirectLogin();
                     }
