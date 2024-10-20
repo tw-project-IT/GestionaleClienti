@@ -23,18 +23,21 @@ const Customers = () => {
         const getCustomers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
                 method: 'POST',
-                headers: {'Authorization': getCookie("token")},
-                credentials: 'include'
+                headers: {'Authorization': getCookie("token")}
             })
                 .then(data => {
+                    console.log("data: " + data)
+                    console.log("data status: " + data.status)
+
                     if (data.status === 400 || data.status === 401 || data.status === 403) {
                         return redirectLogin();
                     }
 
-                    setCustomers(data.json());
+                    return data.json();
                 })
+                .then(data => setCustomers(data))
                 .catch(error => {
-                    console.error("Errore: ", error)
+                    console.error("Errore dio cane: ", error)
                 });
         };
 

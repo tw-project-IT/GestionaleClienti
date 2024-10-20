@@ -1,6 +1,7 @@
 import React from "react"
+import { logout } from "../../../utils/utils";
+
 function Item ({ name, icon, path }) {
-    console.log(name.toLowerCase())
 
     return (
 
@@ -14,7 +15,7 @@ function Item ({ name, icon, path }) {
                         </a>
                     </li>
                     : (
-                        <li>
+                        <li onClick={logout}>
                             <a href={ path } className={" bg-danger"}>
                                 <i className={ "icon" } >{ icon } </i>
                                 <span className="text nav-text">{ name }</span>

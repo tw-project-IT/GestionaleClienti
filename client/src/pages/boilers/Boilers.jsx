@@ -1,18 +1,18 @@
 import React, {useContext, useEffect, useState} from 'react';
 
 import './style.scss';
-import {setTitle} from "../../utils/title";
+import { setTitle } from "../../utils/title";
 import Table from "../../components/table/Table";
-import {LiaClipboardListSolid} from "react-icons/lia";
+import { LiaClipboardListSolid } from "react-icons/lia";
 import Sidebar from "../../components/sidebar/Sidebar";
-import {Notify} from "../../components/notify/Notify";
+import { Notify } from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
 import { FiAlertTriangle } from "react-icons/fi";
 import { getCookie } from "../../utils/cookie";
-import {redirectLogin} from "../../utils/utils";
+import { redirectLogin } from "../../utils/utils";
 
 const Boilers = () => {
 
@@ -33,8 +33,9 @@ const Boilers = () => {
                         return redirectLogin();
                     }
 
-                    setBoilers(data.json());
+                    return data.json();
                 })
+                .then(data => setBoilers(data))
                 .catch(error => {
                     console.error("Errore: ", error)
                 });

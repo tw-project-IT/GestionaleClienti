@@ -1,23 +1,36 @@
-const jwt = require('jsonwebtoken');
-const { secret } = require("../../server");
+const { OAuth2Client } = require('google-auth-library');
 
-function verifyToken(req, res, next) {
+const CLIENT_ID = "1056041880555-v4bc1nqh1dn2gmt21hk3tp98uffcpuv2.apps.googleusercontent.com";
+
+const client = new OAuth2Client(CLIENT_ID);
+
+async function verifyGoogleToken(token) {
+    try {
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: CLIENT_ID,
+        });
+        return ticket.getPayload();
+    } catch (error) {
+        console.error('Token non valido: ', error);
+        throw new Error('Token not valid');
+    }
+}
+
+async function verifyToken(req, res, next) {
     const token = req.headers['authorization'];
 
     if (!token) {
         return res.status(401).json({ message: 'Token not provided' });
     }
 
-    jwt.verify(token, secret, { algorithms: ['RS256'] }, function(err) {
-        if (err) {
-            console.log(err)
-            console.log(token)
-
-            return res.status(403).json({ message: 'Invalid token' });
-        }
-
+    try {
+        const decoded = await verifyGoogleToken(token);
+        // req.user = decoded;
         next();
-    });
+    } catch (error) {
+        return res.status(403).json({ message: 'Token not valid!' });
+    }
 }
 
 module.exports = verifyToken;
