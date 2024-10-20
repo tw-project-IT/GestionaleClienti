@@ -10,6 +10,10 @@ router.post('/api/addMaintenance', verifyToken, async (req, res) => {
         const date = req.body.date;
         const notes = req.body.notes;
 
+        if (!boiler || !date) {
+            return res.send({ error: 'invalid_parameter' });
+        }
+
         let query = `INSERT INTO maintenance (boiler, date, notes) VALUES (?, ?, ?);`;
 
         const [result] = await dbConnection.promise().query(query, [boiler, date, notes]);

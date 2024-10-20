@@ -13,7 +13,6 @@ export default function AddField({ name, value, setter, type = 'text'}) {
                         className="form-control"
                         {...(value != null && { value })}
                         onChange={ (event) => setter(event.target.value) }
-                        required
                     />
                 </div>
             </div>
