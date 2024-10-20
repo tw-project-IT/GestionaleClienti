@@ -1,8 +1,10 @@
 {
   "debug": true,
   "origin": "https://localhost:3000",
-  "secret": "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",
-  "Database": {
+  "allowedEmails": [
+    "paolazzidavide67@gmail.com"
+  ],
+  "Database":{
     "host": "185.25.207.189",
     "user": "root",
     "password": "p9NdYY6KNOuO",

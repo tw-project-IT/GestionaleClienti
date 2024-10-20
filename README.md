@@ -33,10 +33,9 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Aggiunta manutenzione
 - [X] Colori manutenzione
 - [X] Segnale se ci sono note
+- [X] Login google
+- [X] Logout
+- [X] Nota dopo segnale
+- [X] Check email google
 - [ ] io notify 
 - [ ] Home page - dashboard
-- [ ] Nota dopo segnale
-
-- [ ] Login google
-- [ ] Check email google
-- [ ] Logout

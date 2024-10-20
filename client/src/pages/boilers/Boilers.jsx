@@ -62,7 +62,12 @@ const Boilers = () => {
             { boiler.last_maintenance_date ?
                 (<>
                     { new Date(boiler.last_maintenance_date).toLocaleDateString() + " " }
-                    { boiler.notes && <FiAlertTriangle size="23" title={boiler.notes} /> }
+                    { boiler.notes && (
+                        <>
+                            <FiAlertTriangle size="23" />
+                            { " " + boiler.notes}
+                        </>
+                    )}
                 </>) : "Nessuna"
             } </span>
     }

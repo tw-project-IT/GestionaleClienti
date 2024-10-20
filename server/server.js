@@ -10,7 +10,7 @@ const server = require('http').Server(app);
 const {
     debug,
     origin,
-    secret,
+    allowedEmails,
     Database,
 } = require("./config.json");
 
@@ -52,8 +52,8 @@ app.use((req, res, next) => {
 module.exports = {
     server,
     debug,
-    secret,
     origin,
+    allowedEmails,
     dbConnection
 };
 

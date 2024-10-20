@@ -1,4 +1,5 @@
 const { OAuth2Client } = require('google-auth-library');
+const {allowedEmails} = require("../../server");
 
 const CLIENT_ID = "1056041880555-v4bc1nqh1dn2gmt21hk3tp98uffcpuv2.apps.googleusercontent.com";
 
@@ -26,6 +27,13 @@ async function verifyToken(req, res, next) {
 
     try {
         const decoded = await verifyGoogleToken(token);
+
+        const email = decoded["email"];
+
+        if (!allowedEmails.includes(email)) {
+            return res.status(403).json({ message: 'You are not authorized to join!' });
+        }
+
         // req.user = decoded;
         next();
     } catch (error) {
