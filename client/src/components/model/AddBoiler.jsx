@@ -5,7 +5,7 @@ import AddFieldSelect from "./AddFieldSelect";
 import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
-function AddBoiler ()  {
+function AddBoiler ({ callBack })  {
 
     const [customers, setCustomers] = useState([]);
 
@@ -68,6 +68,7 @@ function AddBoiler ()  {
                     return notify.showMessage("error", data.error);
 
                 notify.showMessage("success", "Caldaia aggiunta con successo!");
+                callBack();
             })
             .catch(error => {
                 console.error("Errore: ", error)

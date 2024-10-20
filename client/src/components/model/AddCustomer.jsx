@@ -4,7 +4,7 @@ import AddField from "./AddField";
 import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
-function AddCustomer ()  {
+function AddCustomer ({ callBack })  {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -44,6 +44,7 @@ function AddCustomer ()  {
                     return notify.showMessage("error", data.error);
 
                 notify.showMessage("success", "Cliente aggiunto con successo!");
+                callBack();
             })
             .catch(error => {
                 console.error("Errore: ", error)

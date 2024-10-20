@@ -12,7 +12,7 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 
 ### Pagine
 
-- homepage (Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info)
+- homepage (Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info)
 - lista clienti
 - lista caldaie: sortato per manutenzione, se è presente una nota nell'ultima manutenzione c'è un segnale
 - pagina lista manutenzioni
@@ -37,5 +37,6 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Logout
 - [X] Nota dopo segnale
 - [X] Check email google
-- [ ] io notify 
-- [ ] Home page - dashboard
+- [X] io notify 
+- [X] Sorted per manutenzione
+- [ ] Home page - Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info

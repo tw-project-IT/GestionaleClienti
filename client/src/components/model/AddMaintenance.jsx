@@ -5,7 +5,7 @@ import AddFieldSelect from "./AddFieldSelect";
 import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
-function AddMaintenance() {
+function AddMaintenance({callBack}) {
 
     const [boilers, setBoilers] = useState([]);
 
@@ -37,7 +37,7 @@ function AddMaintenance() {
                 .catch(error => {
                     console.error("Errore: ", error)
                 });
-        };
+        }
 
         getBoilers();
     }, [notify]);
@@ -71,7 +71,7 @@ function AddMaintenance() {
                     return notify.showMessage("error", data.error);
 
                 notify.showMessage("success", "Manutenzione aggiunta con successo!");
-
+                callBack();
             })
             .catch(error => {
                 console.error("Errore: ", error)

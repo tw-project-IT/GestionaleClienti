@@ -11,7 +11,7 @@ router.post('/api/addCustomer', verifyToken, async (req, res) => {
 
         if (!firstname || !lastname) {
             console.error("First or last name not specified!");
-            return res.send({ error: 'query_error' });
+            return res.send({ error: 'invalid_parameter' });
         }
 
         const telephone = req.body.telephone;

@@ -21,28 +21,26 @@ const Boilers = () => {
     const [boilers, setBoilers] = useState(null);
     const notify = useContext(Notify);
 
-    useEffect(() => {
-        const getBoilers = () => {
-            fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
-                method: 'POST',
-                headers: {'Authorization': getCookie("token")},
-                credentials: 'include'
+    const getBoilers = () => {
+        fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
+            method: 'POST',
+            headers: {'Authorization': getCookie("token")},
+            credentials: 'include'
+        })
+            .then(data => {
+                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                    return redirectLogin();
+                }
+
+                return data.json();
             })
-                .then(data => {
-                    if (data.status === 400 || data.status === 401 || data.status === 403) {
-                        return redirectLogin();
-                    }
+            .then(data => setBoilers(data))
+            .catch(error => {
+                console.error("Errore: ", error)
+            });
+    };
 
-                    return data.json();
-                })
-                .then(data => setBoilers(data))
-                .catch(error => {
-                    console.error("Errore: ", error)
-                });
-        };
-
-        getBoilers();
-    }, [notify]);
+    useEffect(() => getBoilers(), [notify]);
 
     function getBackgroundColor(lastMaintenanceDate) {
         if (!lastMaintenanceDate) return "";
@@ -94,8 +92,7 @@ const Boilers = () => {
                                     startItems={[
                                         <AddBoiler/>,
                                         <AddMaintenance />
-                                    ]
-                                    }
+                                    ]}
                                     itemsPerPage = {'5'}
                                     order = {"desc"}
                                     values={ boilers && boilers.map((boiler) => [

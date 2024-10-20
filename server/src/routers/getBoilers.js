@@ -22,6 +22,7 @@ router.post('/api/getBoilers', verifyToken, async (req, res) => {
                 WHERE max_maintenance.boiler = boiler.id
             ) OR maintenance.date IS NULL
             GROUP BY boiler.id
+            ORDER BY last_maintenance_date DESC
         `;
 
         const [result] = await dbConnection.promise().query(query);

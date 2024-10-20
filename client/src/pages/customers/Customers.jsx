@@ -19,27 +19,26 @@ const Customers = () => {
     const [customers, setCustomers] = useState(null);
     const notify = useContext(Notify);
 
-    useEffect(() => {
-        const getCustomers = () => {
-            fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
-                method: 'POST',
-                headers: {'Authorization': getCookie("token")}
+    function getCustomers() {
+        fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
+            method: 'POST',
+            headers: {'Authorization': getCookie("token")},
+            credentials: 'include'
+        })
+            .then(data => {
+                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                    return redirectLogin();
+                }
+
+                return data.json();
             })
-                .then(data => {
-                    if (data.status === 400 || data.status === 401 || data.status === 403) {
-                        return redirectLogin();
-                    }
+            .then(data => setCustomers(data))
+            .catch(error => {
+                console.error("Errore: ", error)
+            });
+    };
 
-                    return data.json();
-                })
-                .then(data => setCustomers(data))
-                .catch(error => {
-                    console.error("Errore dio cane: ", error)
-                });
-        };
-
-        getCustomers();
-    }, [notify]);
+    useEffect(() => getCustomers(), [notify]);
 
     return (
         <>
@@ -62,9 +61,9 @@ const Customers = () => {
                                     headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
                                     //filters={['Manutenzione', 'Urgente']}
                                     startItems={[
-                                        <AddCustomer/>
+                                        <AddCustomer callBack={getCustomers}/>
                                     ]}
-                                    itemsPerPage = {'5'}
+                                    itemsPerPage = {'10'}
                                     order = {"desc"}
                                     values={ customers && customers.map((customer) => [
                                         customer.firstname,
