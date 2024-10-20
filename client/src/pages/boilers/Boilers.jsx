@@ -10,9 +10,8 @@ import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
-import { FiAlertTriangle } from "react-icons/fi";
 import { getCookie } from "../../utils/cookie";
-import { redirectLogin } from "../../utils/utils";
+import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 
 const Boilers = () => {
 
@@ -41,34 +40,6 @@ const Boilers = () => {
     };
 
     useEffect(() => getBoilers(), [notify]);
-
-    function getBackgroundColor(lastMaintenanceDate) {
-        if (!lastMaintenanceDate) return "";
-
-        const yearsPassed = new Date().getFullYear() - new Date(lastMaintenanceDate).getFullYear();
-
-        if (yearsPassed < 1) return "";
-        if (yearsPassed < 2) return "yellow";
-        return "red";
-    }
-
-    function getMaintenanceText(boiler) {
-        return <span style={{
-            backgroundColor: getBackgroundColor(boiler.last_maintenance_date),
-            color: getBackgroundColor(boiler.last_maintenance_date) === "" ? "white" : "black"
-        }}>
-            { boiler.last_maintenance_date ?
-                (<>
-                    { new Date(boiler.last_maintenance_date).toLocaleDateString() + " " }
-                    { boiler.notes && (
-                        <>
-                            <FiAlertTriangle size="23" />
-                            { " " + boiler.notes}
-                        </>
-                    )}
-                </>) : "Nessuna"
-            } </span>
-    }
 
     return (
         <>
@@ -104,6 +75,7 @@ const Boilers = () => {
                                         getMaintenanceText(boiler)
                                     ]) }
                                 />
+
                             </div>
                         </section>
                     </>

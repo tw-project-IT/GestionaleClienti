@@ -19,7 +19,7 @@ const Customers = () => {
     const [customers, setCustomers] = useState(null);
     const notify = useContext(Notify);
 
-    function getCustomers() {
+    const getCustomers = () => {
         fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
             method: 'POST',
             headers: {'Authorization': getCookie("token")},
@@ -36,7 +36,7 @@ const Customers = () => {
             .catch(error => {
                 console.error("Errore: ", error)
             });
-    };
+    }
 
     useEffect(() => getCustomers(), [notify]);
 

@@ -39,4 +39,5 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Check email google
 - [X] io notify 
 - [X] Sorted per manutenzione
-- [ ] Home page - Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info
+- [X] Home page - Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info
+- [ ] Home page - Caldaie da fare si intende tutte le caldaie senza manutenzione???? 
