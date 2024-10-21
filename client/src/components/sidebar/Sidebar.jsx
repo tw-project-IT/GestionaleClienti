@@ -22,9 +22,7 @@ function Sidebar()  {
         }
     }, []);
 
-    useEffect(() => {
-        setCookie("sidebar", open, 7);
-    }, [open]);
+    useEffect(() => setCookie("sidebar", open, 7), [open]);
 
     return (
         <nav className={ "sidebar " + ((!open) ? "sidebar-close" : "") }>

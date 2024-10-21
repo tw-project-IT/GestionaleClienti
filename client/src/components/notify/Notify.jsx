@@ -10,7 +10,7 @@ export const Notify = createContext({
 export const NotifyProvider = ({ children }) => {
     const showMessage = (type, message) => {
         if (type === "error") {
-            toast.error(errorMessages[message] || errorMessages['general_error']);
+            toast.error(errorMessages[message] || message);
         } else if (type === "success") {
             toast.success(message);
         } else {

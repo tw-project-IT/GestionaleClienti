@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import { Notify } from "../notify/Notify";
 import AddField from "./AddField";
 import AddFieldSelect from "./AddFieldSelect";
-import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
 function AddBoiler ({ callBack })  {
@@ -19,12 +18,12 @@ function AddBoiler ({ callBack })  {
     useEffect(() => {
         const getCustomers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
-                method: 'POST',
-                headers: {'Authorization': getCookie("token")}
+                method: 'POST'
             })
                 .then(data => {
                     if (data.status === 400 || data.status === 401 || data.status === 403) {
-                        return redirectLogin();
+                        redirectLogin();
+                        return;
                     }
 
                     return data.json();
@@ -44,8 +43,7 @@ function AddBoiler ({ callBack })  {
         const requestOptions = {
             method: 'POST',
              headers: {
-                 'Content-Type': 'application/json',
-                 'Authorization': getCookie("token")
+                 'Content-Type': 'application/json'
              },
             body: JSON.stringify({
                 customer,
@@ -58,7 +56,8 @@ function AddBoiler ({ callBack })  {
         fetch(`${process.env.REACT_APP_PROXY}/api/addBoiler`, requestOptions)
             .then(data => {
                 if (data.status === 400 || data.status === 401 || data.status === 403) {
-                    return redirectLogin();
+                    redirectLogin();
+                    return;
                 }
 
                 return data.json();

@@ -1,7 +1,6 @@
 import React, {useContext, useState} from "react";
 import { Notify } from "../notify/Notify";
 import AddField from "./AddField";
-import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
 function AddCustomer ({ callBack })  {
@@ -20,8 +19,7 @@ function AddCustomer ({ callBack })  {
         const requestOptions = {
             method: 'POST',
              headers: {
-                 'Content-Type': 'application/json',
-                 'Authorization': getCookie("token")
+                 'Content-Type': 'application/json'
              },
             body: JSON.stringify({
                 firstName,
@@ -35,7 +33,8 @@ function AddCustomer ({ callBack })  {
         fetch(`${process.env.REACT_APP_PROXY}/api/addCustomer`, requestOptions)
             .then(data => {
                 if (data.status === 400 || data.status === 401 || data.status === 403) {
-                    return redirectLogin();
+                    redirectLogin();
+                    return;
                 }
 
                 return data.json();

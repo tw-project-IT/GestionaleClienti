@@ -6,7 +6,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Statistic from "../../components/statistic/Statistic";
 import {LuListTodo} from "react-icons/lu";
 import {Notify} from "../../components/notify/Notify";
-import {getCookie} from "../../utils/cookie";
 import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 import Table from "../../components/table/Table";
 import {LiaClipboardListSolid} from "react-icons/lia";
@@ -26,12 +25,12 @@ const Dashboard = () => {
         const getBoilers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
                 method: 'POST',
-                headers: {'Authorization': getCookie("token")},
                 credentials: 'include'
             })
                 .then(data => {
                     if (data.status === 400 || data.status === 401 || data.status === 403) {
-                        return redirectLogin();
+                        redirectLogin();
+                        return;
                     }
 
                     return data.json();

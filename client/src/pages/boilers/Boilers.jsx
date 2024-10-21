@@ -10,7 +10,6 @@ import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
-import { getCookie } from "../../utils/cookie";
 import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 
 const Boilers = () => {
@@ -23,12 +22,12 @@ const Boilers = () => {
     const getBoilers = () => {
         fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
             method: 'POST',
-            headers: {'Authorization': getCookie("token")},
             credentials: 'include'
         })
             .then(data => {
                 if (data.status === 400 || data.status === 401 || data.status === 403) {
-                    return redirectLogin();
+                    redirectLogin();
+                    return;
                 }
 
                 return data.json();

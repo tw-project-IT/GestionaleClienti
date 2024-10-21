@@ -9,7 +9,6 @@ import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../Error/Error";
 import AddCustomer from "../../components/model/AddCustomer";
-import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
 const Customers = () => {
@@ -22,12 +21,12 @@ const Customers = () => {
     const getCustomers = () => {
         fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
             method: 'POST',
-            headers: {'Authorization': getCookie("token")},
             credentials: 'include'
         })
             .then(data => {
                 if (data.status === 400 || data.status === 401 || data.status === 403) {
-                    return redirectLogin();
+                    redirectLogin();
+                    return;
                 }
 
                 return data.json();

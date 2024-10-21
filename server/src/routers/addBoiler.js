@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const { dbConnection } = require ('../../server');
-const verifyToken = require("./verifyToken");
+const verifyToken = require("../utils/verifyToken");
 
 router.post('/api/addBoiler', verifyToken, async (req, res) => {
 

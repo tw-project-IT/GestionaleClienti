@@ -4,7 +4,6 @@ import './style.scss'
 import {setTitle} from "../../utils/title";
 import {Notify} from "../../components/notify/Notify";
 import {GoogleLogin} from "@react-oauth/google";
-import {setCookie} from "../../utils/cookie";
 import {redirect} from "../../utils/utils";
 
 const Login = () => {
@@ -21,8 +20,22 @@ const Login = () => {
 
                     <GoogleLogin
                         onSuccess={credentialResponse => {
-                            setCookie("token", credentialResponse?.credential, 7);
-                            redirect("/")
+
+                            fetch(`${process.env.REACT_APP_PROXY}/api/login`, {
+                                method: 'POST',
+                                credentials: "include",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({token: credentialResponse?.credential})
+                            })
+                                .then(data => {
+                                    if (data.status !== 200) {
+                                        return data.json();
+                                    }
+
+                                    redirect("/");
+                                }).then(data => notify.showMessage("error", data.message))
                         }}
                         onError={() => {
                             notify.showMessage("error", "Login fallito, riprova");

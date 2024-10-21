@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import {Notify} from "../notify/Notify";
 import AddField from "./AddField";
 import AddFieldSelect from "./AddFieldSelect";
-import {getCookie} from "../../utils/cookie";
 import {redirectLogin} from "../../utils/utils";
 
 function AddMaintenance({callBack}) {
@@ -18,12 +17,12 @@ function AddMaintenance({callBack}) {
     useEffect(() => {
         const getBoilers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
-                method: 'POST',
-                headers: {'Authorization': getCookie("token")}
+                method: 'POST'
             })
                 .then(data => {
                     if (data.status === 400 || data.status === 401 || data.status === 403) {
-                        return redirectLogin();
+                        redirectLogin();
+                        return;
                     }
 
                     return data.json();
@@ -48,8 +47,7 @@ function AddMaintenance({callBack}) {
         const requestOptions = {
             method: 'POST',
              headers: {
-                 'Content-Type': 'application/json',
-                 'Authorization': getCookie("token")
+                 'Content-Type': 'application/json'
              },
             body: JSON.stringify({
                 boiler,
@@ -61,7 +59,8 @@ function AddMaintenance({callBack}) {
         fetch(`${process.env.REACT_APP_PROXY}/api/addMaintenance`, requestOptions)
             .then(data => {
                 if (data.status === 400 || data.status === 401 || data.status === 403) {
-                    return redirectLogin();
+                    redirectLogin();
+                    return;
                 }
 
                 return data.json();
