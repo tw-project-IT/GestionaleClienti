@@ -5,8 +5,6 @@ async function verifyToken(req, res, next) {
 
     const token = req.cookies.token;
 
-    console.log("token verifyToken: " + token);
-
     if (!token) {
         return res.status(401).json({ message: 'Token not provided' });
     }
@@ -22,7 +20,6 @@ async function verifyToken(req, res, next) {
 
         // req.user = decoded;
         next();
-        console.log("next")
     } catch (error) {
         console.log("error: " + error);
         return res.status(403).json({ message: 'Token not valid!' });

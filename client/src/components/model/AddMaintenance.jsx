@@ -46,9 +46,10 @@ function AddMaintenance({callBack}) {
 
         const requestOptions = {
             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 boiler,
                 date,

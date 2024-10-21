@@ -53,8 +53,6 @@ app.use((req, res, next) => {
         body: req.body,
         user: req.user,
         userAgent: req.headers['user-agent'],
-        cookies: req.cookies,
-        headers: req.headers,
         ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
     };
 

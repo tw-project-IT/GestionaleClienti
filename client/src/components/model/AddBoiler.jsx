@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import { Notify } from "../notify/Notify";
+import {Notify} from "../notify/Notify";
 import AddField from "./AddField";
 import AddFieldSelect from "./AddFieldSelect";
 import {redirectLogin} from "../../utils/utils";
@@ -42,9 +42,10 @@ function AddBoiler ({ callBack })  {
 
         const requestOptions = {
             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
                 customer,
                 model,

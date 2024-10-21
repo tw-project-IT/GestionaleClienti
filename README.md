@@ -34,10 +34,10 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Colori manutenzione
 - [X] Segnale se ci sono note
 - [X] Login google
-- [X] Logout
 - [X] Nota dopo segnale
 - [X] Check email google
 - [X] io notify 
 - [X] Sorted per manutenzione
 - [X] Home page - Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info
+- [ ] Logout
 - [ ] Home page - Caldaie da fare si intende tutte le caldaie senza manutenzione???? 

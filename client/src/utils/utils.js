@@ -9,7 +9,7 @@ export const redirect = (path) => {
 export const redirectLogin = () => redirect("/login");
 
 export const logout = () => {
-    // removeCookie('token');
+    removeCookie('token');
     return redirect("/login");
 }
 
