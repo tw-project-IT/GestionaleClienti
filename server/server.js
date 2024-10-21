@@ -65,6 +65,15 @@ server.listen(PORT, () => {
     console.log("\x1b[32m", "✔️", "\x1b[0m", "RUNNING ON PORT: " + PORT);
 });
 
+// Collegamento dei moduli delle route API
+app.use("/", require("./src/routers/getCustomers"));
+app.use("/", require("./src/routers/addCustomer"));
+app.use("/", require("./src/routers/getBoilers"));
+app.use("/", require("./src/routers/addBoiler"));
+app.use("/", require("./src/routers/addMaintenance"));
+app.use("/", require("./src/routers/login"));
+
+
 // Esporta variabili e moduli rilevanti
 module.exports = {
     server,
@@ -73,11 +82,3 @@ module.exports = {
     allowedEmails,
     dbConnection
 };
-
-// Collegamento dei moduli delle route API
-app.use("/", require("./src/routers/getCustomers"));
-app.use("/", require("./src/routers/addCustomer"));
-app.use("/", require("./src/routers/getBoilers"));
-app.use("/", require("./src/routers/addBoiler"));
-app.use("/", require("./src/routers/addMaintenance"));
-app.use("/", require("./src/routers/login"));
