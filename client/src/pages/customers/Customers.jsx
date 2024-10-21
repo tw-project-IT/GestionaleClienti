@@ -24,7 +24,7 @@ const Customers = () => {
             credentials: 'include'
         })
             .then(data => {
-                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                if (data.status === 401 || data.status === 403) {
                     redirectLogin();
                     return;
                 }

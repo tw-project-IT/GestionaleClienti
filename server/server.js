@@ -13,7 +13,7 @@ const {
     debug,
     origin,
     allowedEmails,
-    Database,
+    Database
 } = require("./config.json");
 
 // Connessione al database
@@ -26,6 +26,15 @@ const dbConnection = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0,
 });
+
+// Esporta variabili e moduli rilevanti
+module.exports = {
+    server,
+    debug,
+    origin,
+    allowedEmails,
+    dbConnection
+};
 
 // Configurazione CORS
 app.use(cors({
@@ -72,13 +81,3 @@ app.use("/", require("./src/routers/getBoilers"));
 app.use("/", require("./src/routers/addBoiler"));
 app.use("/", require("./src/routers/addMaintenance"));
 app.use("/", require("./src/routers/login"));
-
-
-// Esporta variabili e moduli rilevanti
-module.exports = {
-    server,
-    debug,
-    origin,
-    allowedEmails,
-    dbConnection
-};

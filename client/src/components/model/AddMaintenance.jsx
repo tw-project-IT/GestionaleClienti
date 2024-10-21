@@ -17,10 +17,11 @@ function AddMaintenance({callBack}) {
     useEffect(() => {
         const getBoilers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
-                method: 'POST'
+                method: 'POST',
+                credentials: 'include'
             })
                 .then(data => {
-                    if (data.status === 400 || data.status === 401 || data.status === 403) {
+                    if (data.status === 401 || data.status === 403) {
                         redirectLogin();
                         return;
                     }
@@ -59,7 +60,7 @@ function AddMaintenance({callBack}) {
 
         fetch(`${process.env.REACT_APP_PROXY}/api/addMaintenance`, requestOptions)
             .then(data => {
-                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                if (data.status === 401 || data.status === 403) {
                     redirectLogin();
                     return;
                 }

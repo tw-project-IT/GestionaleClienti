@@ -18,10 +18,11 @@ function AddBoiler ({ callBack })  {
     useEffect(() => {
         const getCustomers = () => {
             fetch(`${process.env.REACT_APP_PROXY}/api/getCustomers`, {
-                method: 'POST'
+                method: 'POST',
+                credentials: 'include'
             })
                 .then(data => {
-                    if (data.status === 400 || data.status === 401 || data.status === 403) {
+                    if (data.status === 401 || data.status === 403) {
                         redirectLogin();
                         return;
                     }
@@ -56,7 +57,7 @@ function AddBoiler ({ callBack })  {
 
         fetch(`${process.env.REACT_APP_PROXY}/api/addBoiler`, requestOptions)
             .then(data => {
-                if (data.status === 400 || data.status === 401 || data.status === 403) {
+                if (data.status === 401 || data.status === 403) {
                     redirectLogin();
                     return;
                 }
