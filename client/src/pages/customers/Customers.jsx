@@ -7,7 +7,7 @@ import {LiaClipboardListSolid} from "react-icons/lia";
 import Sidebar from "../../components/sidebar/Sidebar";
 import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
-import Error from "../Error/Error";
+import Error from "../error/Error";
 import AddCustomer from "../../components/model/AddCustomer";
 import {redirectLogin} from "../../utils/utils";
 

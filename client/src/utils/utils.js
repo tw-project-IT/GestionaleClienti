@@ -8,11 +8,6 @@ export const redirect = (path) => {
 
 export const redirectLogin = () => redirect("/login");
 
-export const logout = () => {
-    removeCookie('token');
-    return redirect("/login");
-}
-
 function getBackgroundColor(lastMaintenanceDate) {
     if (!lastMaintenanceDate) return "";
 

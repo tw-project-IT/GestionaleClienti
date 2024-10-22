@@ -81,3 +81,4 @@ app.use("/", require("./src/routers/getBoilers"));
 app.use("/", require("./src/routers/addBoiler"));
 app.use("/", require("./src/routers/addMaintenance"));
 app.use("/", require("./src/routers/login"));
+app.use("/", require("./src/routers/logout"));

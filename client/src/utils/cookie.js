@@ -20,7 +20,3 @@ module.exports.setCookie = (name, value, days) => {
     const expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
-
-module.exports.removeCookie = (name) => {
-    document.cookie = name + "=null;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-}

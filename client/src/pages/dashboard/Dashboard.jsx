@@ -10,7 +10,7 @@ import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 import Table from "../../components/table/Table";
 import {LiaClipboardListSolid} from "react-icons/lia";
 import Loading from "../../components/loading/Loading";
-import Error from "../Error/Error";
+import Error from "../error/Error";
 
 const Dashboard = () => {
 

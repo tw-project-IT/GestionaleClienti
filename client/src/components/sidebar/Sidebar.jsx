@@ -65,7 +65,6 @@ function Sidebar()  {
                     <Item
                         name='Logout'
                         icon ={< BiLogOutCircle /> }
-                        path={ '/login' }
                     />
                 </div>
 

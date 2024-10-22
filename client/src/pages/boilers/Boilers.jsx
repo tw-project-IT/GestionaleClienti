@@ -7,7 +7,7 @@ import { LiaClipboardListSolid } from "react-icons/lia";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { Notify } from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
-import Error from "../Error/Error";
+import Error from "../error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
 import {getMaintenanceText, redirectLogin} from "../../utils/utils";
