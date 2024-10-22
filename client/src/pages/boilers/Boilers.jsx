@@ -26,7 +26,7 @@ const Boilers = () => {
         })
             .then(data => {
                 if (data.status === 401 || data.status === 403) {
-                    //redirectLogin();
+                    redirectLogin();
                     return;
                 }
 
@@ -63,7 +63,7 @@ const Boilers = () => {
                                         <AddBoiler/>,
                                         <AddMaintenance />
                                     ]}
-                                    itemsPerPage = {'5'}
+                                    itemsPerPage = {'10'}
                                     order = {"desc"}
                                     values={ boilers && boilers.map((boiler) => [
                                         boiler.id,
