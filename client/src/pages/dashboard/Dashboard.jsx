@@ -37,7 +37,17 @@ const Dashboard = () => {
                 })
                 .then(data => {
                     setBoilersWithNotes(data.filter(boiler => boiler.notes))
-                    setBoilersToDo(data.filter(boiler => !boiler.last_maintenance_date));
+                    setBoilersToDo(data.filter(boiler => {
+                        if (!boiler.last_maintenance_date) return true;
+
+                        const lastMaintenanceDate = new Date(boiler.last_maintenance_date);
+                        const currentDate = new Date();
+
+                        const oneDayInMs = 24 * 60 * 60 * 1000;
+                        const daysPassed = Math.floor((currentDate - lastMaintenanceDate) / oneDayInMs);
+
+                        return daysPassed > 365;
+                    }));
                 })
                 .catch(error => {
                     console.error("Errore: ", error)

@@ -60,8 +60,8 @@ const Boilers = () => {
                                     nameIcon={<LiaClipboardListSolid/>}
                                     headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
                                     startItems={[
-                                        <AddBoiler/>,
-                                        <AddMaintenance />
+                                        <AddBoiler callBack={getBoilers}/>,
+                                        <AddMaintenance callBack={getBoilers}/>
                                     ]}
                                     itemsPerPage = {'10'}
                                     order = {"desc"}
