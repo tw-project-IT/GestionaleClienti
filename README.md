@@ -40,4 +40,9 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Sorted per manutenzione
 - [X] Home page - Contatore caldaie da fare, Tutte le caldaie da fare, Tuttle le caldaie con note o info
 - [X] Logout
-- [X] Home page - Caldaie da fare si intende tutte le caldaie senza manutenzione???? 
+- [X] Home page - Caldaie da fare si intende tutte le caldaie senza manutenzione????
+      
+- [ ] Modifica caldaia
+- [ ] Modifica cliente
+- [ ] Elimina caldaia
+- [ ] Elimina cliente
