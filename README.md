@@ -46,3 +46,4 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Modifica cliente
 - [ ] Elimina caldaia
 - [ ] Elimina cliente
+- [ ] Tabelle 20 righe
