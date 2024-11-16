@@ -62,7 +62,7 @@ const Customers = () => {
                                     startItems={[
                                         <AddCustomer callBack={getCustomers}/>
                                     ]}
-                                    itemsPerPage = {'10'}
+                                    itemsPerPage = {'20'}
                                     order = {"desc"}
                                     values={ customers && customers.map((customer) => [
                                         customer.firstname,

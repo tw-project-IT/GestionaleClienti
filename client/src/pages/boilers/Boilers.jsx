@@ -63,7 +63,7 @@ const Boilers = () => {
                                         <AddBoiler callBack={getBoilers}/>,
                                         <AddMaintenance callBack={getBoilers}/>
                                     ]}
-                                    itemsPerPage = {'10'}
+                                    itemsPerPage = {'20'}
                                     order = {"desc"}
                                     values={ boilers && boilers.map((boiler) => [
                                         boiler.id,

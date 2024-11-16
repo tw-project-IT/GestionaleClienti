@@ -88,7 +88,7 @@ const Dashboard = () => {
                                             name={'Lista caldaie da fare'}
                                             nameIcon={<LiaClipboardListSolid/>}
                                             headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
-                                            itemsPerPage={'10'}
+                                            itemsPerPage={'20'}
                                             order={"desc"}
                                             searchEnabled="false"
                                             values={boilersToDo && boilersToDo.map((boiler) => [
@@ -108,7 +108,7 @@ const Dashboard = () => {
                                             name={'Lista caldaie con note'}
                                             nameIcon={<LiaClipboardListSolid/>}
                                             headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
-                                            itemsPerPage={'10'}
+                                            itemsPerPage={'20'}
                                             order={"desc"}
                                             searchEnabled="false"
                                             values={boilersWithNotes && boilersWithNotes.map((boiler) => [
