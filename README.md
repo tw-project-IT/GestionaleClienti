@@ -48,6 +48,6 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Elimina cliente
 - [ ] Tabelle 20 righe
 
-- [ ] - Aggiungere caldaia nel addMaintenance quando appena aggiunta con callback 
-- [ ] - messaggio errore se non selezioni caldaia
-- [ ] - Tipologia: lista caldaia dopo cliente
+- [ ] Aggiungere caldaia nel addMaintenance quando appena aggiunta con callback 
+- [ ] messaggio errore se non selezioni caldaia
+- [ ] Tipologia: lista caldaia dopo cliente
