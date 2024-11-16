@@ -1,46 +1,16 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {Notify} from "../notify/Notify";
 import AddField from "./AddField";
 import AddFieldSelect from "./AddFieldSelect";
 import {redirectLogin} from "../../utils/utils";
 
-function AddMaintenance({callBack}) {
-
-    const [boilers, setBoilers] = useState([]);
+function AddMaintenance({ callBack, boilers }) {
 
     const [boiler, setBoiler] = useState([]);
     const [date, setDate] = useState("");
     const [notes, setNotes] = useState("");
 
     const notify = useContext(Notify);
-
-    useEffect(() => {
-        const getBoilers = () => {
-            fetch(`${process.env.REACT_APP_PROXY}/api/getBoilers`, {
-                method: 'POST',
-                credentials: 'include'
-            })
-                .then(data => {
-                    if (data.status === 401 || data.status === 403) {
-                        redirectLogin();
-                        return;
-                    }
-
-                    return data.json();
-                })
-                .then(data => {
-                    if (data.error)
-                        return notify.showMessage("error", data.error);
-
-                    setBoilers(data);
-                })
-                .catch(error => {
-                    console.error("Errore: ", error)
-                });
-        }
-
-        getBoilers();
-    }, [notify]);
 
     const handleSave = async (event) => {
         event.preventDefault();

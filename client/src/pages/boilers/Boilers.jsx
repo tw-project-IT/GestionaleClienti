@@ -61,7 +61,7 @@ const Boilers = () => {
                                     headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
                                     startItems={[
                                         <AddBoiler callBack={getBoilers}/>,
-                                        <AddMaintenance callBack={getBoilers}/>
+                                        <AddMaintenance callBack={getBoilers} boilers={boilers}/>
                                     ]}
                                     itemsPerPage = {'20'}
                                     order = {"desc"}
