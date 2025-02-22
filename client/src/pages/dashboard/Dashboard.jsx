@@ -83,7 +83,7 @@ const Dashboard = () => {
                                         <Table
                                             name={'Lista caldaie da fare'}
                                             nameIcon={<LiaClipboardListSolid/>}
-                                            headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
+                                            headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Altro', 'Ultima manutenzione']}
                                             itemsPerPage={'20'}
                                             order={"desc"}
                                             searchEnabled="false"
@@ -93,6 +93,7 @@ const Dashboard = () => {
                                                 boiler.model,
                                                 boiler.registry_code,
                                                 new Date(boiler.installation_date).toLocaleDateString(),
+                                                boiler.other,
                                                 getMaintenanceText(boiler)
                                             ])}
                                         />
@@ -103,7 +104,7 @@ const Dashboard = () => {
                                         <Table
                                             name={'Lista caldaie con note'}
                                             nameIcon={<LiaClipboardListSolid/>}
-                                            headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
+                                            headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Altro', 'Ultima manutenzione']}
                                             itemsPerPage={'20'}
                                             order={"desc"}
                                             searchEnabled="false"
@@ -113,6 +114,7 @@ const Dashboard = () => {
                                                 boiler.model,
                                                 boiler.registry_code,
                                                 new Date(boiler.installation_date).toLocaleDateString(),
+                                                boiler.other,
                                                 getMaintenanceText(boiler)
                                             ])}
                                         />

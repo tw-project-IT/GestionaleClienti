@@ -12,6 +12,7 @@ function AddBoiler ({ callBack })  {
     const [model, setModel] = useState("");
     const [registryCode, setRegistryCode] = useState("");
     const [installationDate, setInstallationDate] = useState("");
+    const [other, setOther] = useState("");
 
     const notify = useContext(Notify);
 
@@ -51,7 +52,8 @@ function AddBoiler ({ callBack })  {
                 customer,
                 model,
                 registryCode,
-                installationDate
+                installationDate,
+                other
             })
         };
 
@@ -137,6 +139,11 @@ function AddBoiler ({ callBack })  {
                                               value={installationDate}
                                               setter={setInstallationDate}
                                               type="date"
+                                    />
+
+                                    <AddField name="Altro"
+                                              value={other}
+                                              setter={setOther}
                                     />
                                 </div>
 

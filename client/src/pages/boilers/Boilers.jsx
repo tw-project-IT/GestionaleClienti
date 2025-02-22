@@ -58,7 +58,7 @@ const Boilers = () => {
                                 <Table
                                     name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Ultima manutenzione']}
+                                    headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Altro', 'Ultima manutenzione']}
                                     startItems={[
                                         <AddBoiler callBack={getBoilers}/>,
                                         <AddMaintenance callBack={getBoilers} boilers={boilers}/>
@@ -71,6 +71,7 @@ const Boilers = () => {
                                         boiler.model,
                                         boiler.registry_code,
                                         new Date(boiler.installation_date).toLocaleDateString(),
+                                        boiler.other,
                                         getMaintenanceText(boiler)
                                     ]) }
                                 />

@@ -10,14 +10,15 @@ router.post('/api/addBoiler', verifyToken, async (req, res) => {
         const model = req.body.model;
         const registryCode = req.body.registryCode;
         const installationDate = req.body.installationDate;
+        const other = req.body.other;
 
         if (!customer || !model || !registryCode || !installationDate) {
             return res.send({ error: 'invalid_parameter' });
         }
 
-        let query = `INSERT INTO boiler (customer, model, registry_code, installation_date) VALUES (?, ?, ?, ?);`;
+        let query = `INSERT INTO boiler (customer, model, registry_code, installation_date, other) VALUES (?, ?, ?, ?, ?);`;
 
-        const [result] = await dbConnection.promise().query(query, [customer, model, registryCode, installationDate]);
+        const [result] = await dbConnection.promise().query(query, [customer, model, registryCode, installationDate, other]);
 
         res.send(result);
     } catch (error) {
