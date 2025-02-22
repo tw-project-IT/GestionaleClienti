@@ -11,10 +11,13 @@ export const redirectLogin = () => redirect("/login");
 function getBackgroundColor(lastMaintenanceDate) {
     if (!lastMaintenanceDate) return "";
 
-    const yearsPassed = new Date().getFullYear() - new Date(lastMaintenanceDate).getFullYear();
+    const today = new Date();
+    const lastDate = new Date(lastMaintenanceDate);
 
-    if (yearsPassed < 1) return "";
-    if (yearsPassed < 2) return "yellow";
+    const daysPassed = Math.floor((today - lastDate) / (1000 * 60 * 60 * 24));
+
+    if (daysPassed < 365) return "";
+    if (daysPassed < 730) return "yellow";
     return "red";
 }
 
