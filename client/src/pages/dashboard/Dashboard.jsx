@@ -6,7 +6,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Statistic from "../../components/statistic/Statistic";
 import {LuListTodo} from "react-icons/lu";
 import {Notify} from "../../components/notify/Notify";
-import {getMaintenanceText, redirectLogin} from "../../utils/utils";
+import {getDiffDays, getMaintenanceText, redirectLogin} from "../../utils/utils";
 import Table from "../../components/table/Table";
 import {LiaClipboardListSolid} from "react-icons/lia";
 import Loading from "../../components/loading/Loading";
@@ -40,11 +40,7 @@ const Dashboard = () => {
                     setBoilersToDo(data.filter(boiler => {
                         if (!boiler.last_maintenance_date) return true;
 
-                        const lastMaintenanceDate = new Date(boiler.last_maintenance_date);
-                        const currentDate = new Date();
-
-                        const oneDayInMs = 24 * 60 * 60 * 1000;
-                        const daysPassed = Math.floor((currentDate - lastMaintenanceDate) / oneDayInMs);
+                        const daysPassed = getDiffDays(boiler.last_maintenance_date);
 
                         return daysPassed > 365;
                     }));
