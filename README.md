@@ -46,6 +46,5 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Modifica cliente
 - [ ] Elimina caldaia
 - [ ] Elimina cliente
-- [ ] Tipologia: lista caldaia dopo cliente
 
 - [ ] messaggio errore se non selezioni caldaia
