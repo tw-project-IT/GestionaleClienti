@@ -9,6 +9,7 @@ import { NotifyProvider } from "./components/notify/Notify";
 import Boilers from "./pages/boilers/Boilers";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Login from "./pages/login/Login";
+import BoilersToDo from "./pages/boilderstodo/BoilersToDo";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                         <Route path='/login' element={<Login/>}/>
                         <Route path='/customers' element={<Customers/>}/>
                         <Route path='/boilers' element={<Boilers/>}/>
+                        <Route path='/boilerstodo' element={<BoilersToDo/>}/>
                     </Routes>
                 </BrowserRouter>
             </NotifyProvider>

@@ -58,6 +58,12 @@ function Sidebar()  {
                             path={ '/boilers' }
                         />
 
+                        <Item
+                            name='Manuntezioni'
+                            icon={< LiaClipboardListSolid /> }
+                            path={ '/boilerstodo' }
+                        />
+
                     </ul>
                 </div>
 

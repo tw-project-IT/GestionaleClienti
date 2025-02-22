@@ -1,0 +1,20 @@
+.right-container {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  height: 100vh;
+  transition: all 0.3s ease;
+  width: calc(100% - 250px);
+
+  .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ccc;
+    padding: 12px 60px;
+  }
+
+  .card-deck {
+    padding: 50px;
+  }
+
+}
