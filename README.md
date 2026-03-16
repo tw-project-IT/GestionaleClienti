@@ -46,5 +46,5 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Modifica cliente
 - [ ] Elimina caldaia
 - [ ] Elimina cliente
-
-- [ ] messaggio errore se non selezioni caldaia
+- [ ] Indagare google expiration
+- [ ] Rapportino pdf: file base uguale per ogni cliente, poi editabile, e linkato alla manutenzione 
