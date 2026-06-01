@@ -10,6 +10,7 @@ import Loading from "../../components/loading/Loading";
 import Error from "../error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
+import DeleteBoiler from "../../components/model/DeleteBoiler";
 import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 
 const Boilers = () => {
@@ -58,7 +59,7 @@ const Boilers = () => {
                                 <Table
                                     name={'Lista caldaie'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Altro', 'Ultima manutenzione']}
+                                    headers={['Id', 'Cliente', 'Modello', 'Cod. catasto', 'Installazione', 'Altro', 'Ultima manutenzione', 'Azioni']}
                                     startItems={[
                                         <AddBoiler callBack={getBoilers}/>,
                                         <AddMaintenance callBack={getBoilers} boilers={boilers}/>
@@ -72,7 +73,8 @@ const Boilers = () => {
                                         boiler.registry_code,
                                         new Date(boiler.installation_date).toLocaleDateString(),
                                         boiler.other,
-                                        getMaintenanceText(boiler)
+                                        getMaintenanceText(boiler),
+                                        <DeleteBoiler callBack={getBoilers} boiler={boiler}/>
                                     ]) }
                                 />
 
