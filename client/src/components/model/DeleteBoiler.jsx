@@ -79,9 +79,9 @@ function DeleteBoiler({ callBack, boiler }) {
 
                         <form onSubmit={ handleDelete }>
                             <div className="modal-body">
-                               Confermi di voler eliminare la caldaia
+                               <p>Confermi di voler eliminare la caldaia <br />
                                 { " " + boiler.model + " (" + boiler.id + ") " }
-                                di { boiler.customer }?
+                                   di { boiler.customer }?</p>
                             </div>
 
                             <div className="modal-footer">
