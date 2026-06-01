@@ -47,4 +47,5 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [ ] Modifica caldaia
 - [ ] Modifica cliente
 - [ ] Indagare google expiration
+
 - [ ] Rapportino pdf: file base uguale per ogni cliente, poi editabile, e linkato alla manutenzione 
