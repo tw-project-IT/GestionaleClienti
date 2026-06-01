@@ -5,9 +5,9 @@
     "paolazzidavide67@gmail.com"
   ],
   "Database":{
-    "host": "185.25.207.189",
+    "host": "host",
     "user": "root",
-    "password": "p9NdYY6KNOuO",
+    "password": "password",
     "database": "GestionaleClienti"
   }
 }
