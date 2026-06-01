@@ -9,6 +9,7 @@ import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../error/Error";
 import AddCustomer from "../../components/model/AddCustomer";
+import DeleteCustomer from "../../components/model/DeleteCustomer";
 import {redirectLogin} from "../../utils/utils";
 
 const Customers = () => {
@@ -57,7 +58,7 @@ const Customers = () => {
                                 <Table
                                     name={'Lista clienti'}
                                     nameIcon={<LiaClipboardListSolid/>}
-                                    headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo']}
+                                    headers={['Nome', 'Cognome', 'Telefono', 'Email', 'Indirizzo', 'Azioni']}
                                     //filters={['Manutenzione', 'Urgente']}
                                     startItems={[
                                         <AddCustomer callBack={getCustomers}/>
@@ -69,7 +70,8 @@ const Customers = () => {
                                         customer.lastname,
                                         customer.telephone,
                                         customer.email,
-                                        customer.address
+                                        customer.address,
+                                        <DeleteCustomer callBack={getCustomers} customer={customer}/>
                                     ]) }
                                 />
                             </div>

@@ -3,7 +3,7 @@ import {Notify} from "../notify/Notify";
 import {redirectLogin} from "../../utils/utils";
 import {FiTrash2} from "react-icons/fi";
 
-function DeleteBoiler({ callBack, boiler }) {
+function DeleteCustomer({ callBack, customer }) {
 
     const notify = useContext(Notify);
 
@@ -17,11 +17,11 @@ function DeleteBoiler({ callBack, boiler }) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: boiler.id
+                id: customer.id
             })
         };
 
-        fetch(`${process.env.REACT_APP_PROXY}/api/deleteBoiler`, requestOptions)
+        fetch(`${process.env.REACT_APP_PROXY}/api/deleteCustomer`, requestOptions)
             .then(data => {
                 if (data.status === 401 || data.status === 403) {
                     redirectLogin();
@@ -34,7 +34,7 @@ function DeleteBoiler({ callBack, boiler }) {
                 if (data.error)
                     return notify.showMessage("error", data.error);
 
-                notify.showMessage("success", "Caldaia eliminata con successo!");
+                notify.showMessage("success", "Cliente eliminato con successo!");
                 callBack();
             })
             .catch(error => {
@@ -48,15 +48,15 @@ function DeleteBoiler({ callBack, boiler }) {
                 type="button"
                 className="btn btn-sm btn-outline-danger"
                 data-bs-toggle="modal"
-                data-bs-target={ "#deleteBoiler" + boiler.id }
-                aria-label="Elimina caldaia"
+                data-bs-target={ "#deleteCustomer" + customer.id }
+                aria-label="Elimina cliente"
             >
                 <FiTrash2 />
             </button>
 
             <div
                 className="modal fade"
-                id={ "deleteBoiler" + boiler.id }
+                id={ "deleteCustomer" + customer.id }
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 aria-labelledby="staticBackdropLabel"
@@ -67,7 +67,7 @@ function DeleteBoiler({ callBack, boiler }) {
                     <div className="modal-content bg-dark text-light">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="content">
-                                { "Elimina Caldaia" }
+                                { "Elimina Cliente" }
                             </h1>
                             <button
                                 type="button"
@@ -79,9 +79,13 @@ function DeleteBoiler({ callBack, boiler }) {
 
                         <form onSubmit={ handleDelete }>
                             <div className="modal-body">
-                               Confermi di voler eliminare la caldaia
-                                { " " + boiler.model + " (" + boiler.id + ") " }
-                                di { boiler.customer }?
+                                Confermi di voler eliminare il cliente
+                                { " " + customer.firstname + " " + customer.lastname + " (" + customer.id + ")" }?
+                                {
+                                    <p className="mt-2 mb-0">
+                                        Verranno eliminate anche le eventuali caldaie associate (e le relative manutenzioni).
+                                    </p>
+                                }
                             </div>
 
                             <div className="modal-footer">
@@ -99,4 +103,4 @@ function DeleteBoiler({ callBack, boiler }) {
     )
 }
 
-export default DeleteBoiler;
+export default DeleteCustomer;
