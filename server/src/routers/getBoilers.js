@@ -9,6 +9,7 @@ router.post('/api/getBoilers', verifyToken, async (req, res) => {
         const query = `
            SELECT
                 boiler.*,
+                boiler.customer AS customer_id,
                 CONCAT(customer.firstname, " ", customer.lastname) AS customer,
                 maintenance.date as last_maintenance_date,
                 maintenance.notes

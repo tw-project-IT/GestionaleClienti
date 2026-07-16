@@ -10,6 +10,7 @@ import Loading from "../../components/loading/Loading";
 import Error from "../error/Error";
 import AddBoiler from "../../components/model/AddBoiler";
 import AddMaintenance from "../../components/model/AddMaintenance";
+import EditBoiler from "../../components/model/EditBoiler";
 import DeleteBoiler from "../../components/model/DeleteBoiler";
 import {getMaintenanceText, redirectLogin} from "../../utils/utils";
 
@@ -74,7 +75,10 @@ const Boilers = () => {
                                         new Date(boiler.installation_date).toLocaleDateString(),
                                         boiler.other,
                                         getMaintenanceText(boiler),
-                                        <DeleteBoiler callBack={getBoilers} boiler={boiler}/>
+                                        <div className="d-flex gap-2">
+                                            <EditBoiler callBack={getBoilers} boiler={boiler}/>
+                                            <DeleteBoiler callBack={getBoilers} boiler={boiler}/>
+                                        </div>
                                     ]) }
                                 />
 

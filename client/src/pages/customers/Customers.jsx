@@ -9,6 +9,7 @@ import {Notify} from "../../components/notify/Notify";
 import Loading from "../../components/loading/Loading";
 import Error from "../error/Error";
 import AddCustomer from "../../components/model/AddCustomer";
+import EditCustomer from "../../components/model/EditCustomer";
 import DeleteCustomer from "../../components/model/DeleteCustomer";
 import {redirectLogin} from "../../utils/utils";
 
@@ -71,7 +72,10 @@ const Customers = () => {
                                         customer.telephone,
                                         customer.email,
                                         customer.address,
-                                        <DeleteCustomer callBack={getCustomers} customer={customer}/>
+                                        <div className="d-flex gap-2">
+                                            <EditCustomer callBack={getCustomers} customer={customer}/>
+                                            <DeleteCustomer callBack={getCustomers} customer={customer}/>
+                                        </div>
                                     ]) }
                                 />
                             </div>

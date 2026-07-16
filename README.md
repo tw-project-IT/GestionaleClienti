@@ -43,9 +43,8 @@ Gestionale clienti, con attenzione alle manutenzioni effettuate
 - [X] Home page - Caldaie da fare si intende tutte le caldaie senza manutenzione????
 - [X] Elimina caldaia
 - [X] Elimina cliente
-      
-- [ ] Modifica caldaia
-- [ ] Modifica cliente
-- [ ] Indagare google expiration
+- [X] Modifica caldaia
+- [X] Modifica cliente
 
+- [ ] Indagare google expiration
 - [ ] Rapportino pdf: file base uguale per ogni cliente, poi editabile, e linkato alla manutenzione 
