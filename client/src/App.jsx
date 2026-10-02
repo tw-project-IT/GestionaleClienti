@@ -14,7 +14,7 @@ import BoilersToDo from "./pages/boilderstodo/BoilersToDo";
 function App() {
 
     return (
-        <GoogleOAuthProvider clientId="1056041880555-v4bc1nqh1dn2gmt21hk3tp98uffcpuv2.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="1056041880555-mhn8brn6traskjm1sc15phdnkcih5elb.apps.googleusercontent.com">
             <NotifyProvider>
                 <BrowserRouter>
                     <Routes>
